@@ -83,4 +83,10 @@ num terminal iterativo
 
 `Rocketpay.User.changeset(%{name: "batata", password: "hue546", email: "hue@hue.com", nickname: "uaeh", age: 23})`
 
-Rocketpay.create_user(%{name: "batata", password: "hue546", email: "hue@hue.com", nickname: "uaeh", age: 23})
+# Cria um usuário no DB
+
+`Rocketpay.create_user(%{name: "batata", password: "hue546", email: "hue@hue.com", nickname: "uaeh", age: 23})`
+
+# select all
+
+`Rocketpay.Repo.all(Rocketpay.User)`
