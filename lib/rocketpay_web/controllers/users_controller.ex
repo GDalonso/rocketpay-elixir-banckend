@@ -6,16 +6,12 @@ defmodule RocketpayWeb.UsersController do
   action_fallback RocketpayWeb.FallbackController
 
   def create(conn, params) do
-    params
-    |> Rocketpay.create_user()
-    |> handle_response(conn)
-  end
+    #Faz o pattern match de sucesso, se der erro joga pro fallback_controller sozinho
+    with {:ok, %User{}=user} <- Rocketpay.create_user(params) do
+      conn
+      |> put_status(:created)
+      |> render("create.json", user: user)
 
-  defp handle_response({:ok, %User{}=user}, conn) do
-    conn
-    |> put_status(:created)
-    |> render("create.json", user: user)
-
+    end
   end
-  defp handle_response({:error, _result} = error, _conn), do: error
 end
