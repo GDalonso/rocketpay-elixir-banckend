@@ -90,3 +90,14 @@ num terminal iterativo
 # select all
 
 `Rocketpay.Repo.all(Rocketpay.User)`
+
+# nova migration
+`mix ecto.gen.migration create_accounts_table`
+
+Rocketpay.Account.changeset(%{user_id: "24f562cc-4b9e-4e1e-ba63-82e7915f5985", balance: "500"}) |> Rocketpay.Repo.insert()
+
+# Todos os users derefing account
+
+`Rocketpay.Repo.all(Rocketpay.User) |> Rocketpay.Repo.preload(:account)`
+
+Rocketpay.create_user(%{name: "as5d4b5faatataa", password: "huea5a46", email: "h5sad46usae@huea.com", nickname: "uasdaasda5a4eah", age: 23})
