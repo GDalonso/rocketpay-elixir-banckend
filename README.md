@@ -101,3 +101,5 @@ Rocketpay.Account.changeset(%{user_id: "24f562cc-4b9e-4e1e-ba63-82e7915f5985", b
 `Rocketpay.Repo.all(Rocketpay.User) |> Rocketpay.Repo.preload(:account)`
 
 Rocketpay.create_user(%{name: "as5d4b5faatataa", password: "huea5a46", email: "h5sad46usae@huea.com", nickname: "uasdaasda5a4eah", age: 23})
+
+Rocketpay.deposit(%{"id" =>  "081c61d1-67b5-4935-a103-95625f611685", "value" => "50"})

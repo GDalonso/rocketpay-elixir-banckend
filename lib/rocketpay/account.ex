@@ -22,8 +22,10 @@ defmodule Rocketpay.Account do
   end
 
   #valida parâmetros enviados
-  def changeset(params) do
-    %__MODULE__{}
+  #Esse changeset faz update por receber o struct antigo
+  #struct OR vazio
+  def changeset(struct \\ %__MODULE__{}, params) do
+    struct
     |> cast(params, @required_params)
     |> validate_required(@required_params)
     #valida a constraint criada na migration
