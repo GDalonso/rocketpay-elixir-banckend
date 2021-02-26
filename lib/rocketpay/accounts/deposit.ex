@@ -5,6 +5,7 @@ defmodule Rocketpay.Accounts.Deposit do
   def call(%{"id" => id, "value" => value}) do
     Multi.new()
     |> Multi.run(:account, fn repo, _changes ->  get_account(repo, id) end)
+    #Só vai executar o resto do fluxo se o mult, run anterior não der erro
     |> Multi.run(:update_balance, fn repo, %{account: account} ->  update_balance(repo, account, value) end)
     |> run_transaction()
   end
